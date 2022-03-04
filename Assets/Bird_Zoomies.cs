@@ -7,10 +7,13 @@ public class Bird_Zoomies : MonoBehaviour
     public GameManager gameManager;
     public float velocity = 1;
     private Rigidbody2D rb;
+    public float timesHit;
+    
 
     // Use this for initialization
     void Start()
     {
+        timesHit = 0;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -26,7 +29,11 @@ public class Bird_Zoomies : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.GameOver();
+        timesHit++;
+        if(timesHit == 3)
+        {
+            gameManager.GameOver();
+        }
     }
 
 
